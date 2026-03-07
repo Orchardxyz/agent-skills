@@ -13,13 +13,19 @@ My personal collection of reusable [Agent Skills](https://agentskills.io/) for A
 ### Install a specific skill
 
 ```bash
-npx skills add https://github.com/Orchardxyz/agent-skills/skills/[skill-name]
+npx skills add https://github.com/Orchardxyz/agent-skills --skill [skill-name]
+```
+
+Example for `skill-comparison`:
+
+```bash
+npx skills add https://github.com/Orchardxyz/agent-skills --skill skill-comparison
 ```
 
 ### Install all curated skills
 
 ```bash
-npx skills add https://github.com/Orchardxyz/agent-skills
+npx skills add https://github.com/Orchardxyz/agent-skills --skill '*'
 ```
 
 Skills are installed into `.windsurf/skills/` or `.claude/skills/` (depending on your agent) and are automatically discovered at startup.

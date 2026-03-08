@@ -2,6 +2,12 @@
 
 This skill helps AI agents analyze projects, create comprehensive summaries, and convert them into reusable CI template projects with GitHub Actions workflows.
 
+## Installation
+
+```bash
+npx skills add https://github.com/Orchardxyz/agent-skills --skill project-to-ci-template
+```
+
 ## What This Skill Does
 
 When a user asks to "summarize this project" or "make this a CI template", this skill guides the agent through:

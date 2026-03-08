@@ -2,6 +2,12 @@
 
 A skill for systematically comparing multiple similar skills to help users choose the best option for their needs.
 
+## Installation
+
+```bash
+npx skills add https://github.com/Orchardxyz/agent-skills --skill skill-comparison
+```
+
 ## Purpose
 
 When multiple skills exist for the same purpose, this skill helps users:

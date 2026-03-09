@@ -76,7 +76,7 @@ Skill B: ~/skills/git-workflow/SKILL.md
 # 5. Recommend based on user context
 ```
 
-### Comparing Remote and Local Skills
+### Comparing Remote and Local Skills (safe pattern)
 
 ```bash
 # User provides mixed sources
@@ -84,7 +84,8 @@ Skill A: https://github.com/user/repo/skills/data-viz/SKILL.md
 Skill B: /Users/me/custom-skills/chart-maker/SKILL.md
 
 # The skill will:
-# 1. Use fetch_skill.py to retrieve remote skill
+# 1. Use fetch_skill.py with explicit allowlist to retrieve remote skill
+#    python scripts/fetch_skill.py --allow-remote --allow-hosts github.com,raw.githubusercontent.com https://github.com/user/repo/skills/data-viz/SKILL.md
 # 2. Read local skill from filesystem
 # 3. Perform comparison analysis
 # 4. Provide recommendation
@@ -92,19 +93,23 @@ Skill B: /Users/me/custom-skills/chart-maker/SKILL.md
 
 ## Tools
 
-### fetch_skill.py
+### fetch_skill.py (safer defaults)
 
-Utility script to retrieve skills from various sources.
+Utility script to retrieve skills from various sources. Remote fetching is **disabled by default**; enable it explicitly and scope allowed hosts.
 
 **Usage:**
 ```bash
-python scripts/fetch_skill.py <url_or_path>
+# Local file (default safe path)
+python scripts/fetch_skill.py /path/to/local/skill/SKILL.md
+
+# HTTPS remote (requires explicit consent and allowlist)
+python scripts/fetch_skill.py --allow-remote --allow-hosts github.com,raw.githubusercontent.com https://raw.githubusercontent.com/user/repo/main/skills/data-viz/SKILL.md
 ```
 
 **Examples:**
 ```bash
-# Fetch from URL
-python scripts/fetch_skill.py https://example.com/skill/SKILL.md
+# Fetch from a trusted HTTPS URL (explicitly allowed)
+python scripts/fetch_skill.py --allow-remote --allow-hosts example.com https://example.com/skill/SKILL.md
 
 # Read from local path
 python scripts/fetch_skill.py /path/to/skill/SKILL.md
@@ -125,9 +130,9 @@ See `references/COMPARISON_CRITERIA.md` for the complete evaluation framework, i
 ## Dependencies
 
 - **Python 3.8+** (for fetch_skill.py script)
-- **Internet access** (for fetching remote skills)
+- **Internet access** (only when remote fetching is explicitly enabled)
 
-No additional Python packages required - uses only standard library.
+No additional Python packages required - uses only standard library. Remote content is limited to HTTPS and capped at ~500 KB; prefer local/trusted sources.
 
 ## License
 

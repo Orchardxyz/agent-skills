@@ -122,6 +122,10 @@ Run the extraction script: `scripts/extract.py`
 - **`references/`** — Detailed documentation (e.g., `REFERENCE.md`, `FORMS.md`, domain-specific files). Loaded only when referenced.
 - **`assets/`** — Templates, images, data files, schemas. Loaded only when referenced.
 
+### 6. Required README
+
+Every skill directory must include a `README.md` that, at minimum, contains an **Installation** section explaining how to set up or install any needed dependencies.
+
 ## Code Quality Guidelines
 
 - Write instructions that are **unambiguous** — an agent should be able to follow them without guessing

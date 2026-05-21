@@ -12,9 +12,6 @@ This repository stores reusable [Agent Skills](https://agentskills.io/) — stru
 agent-skills/
 ├── skills/
 │   ├── git-conditional-identities/
-│   ├── git-workflow-automator/
-│   ├── one-page-visual/
-│   ├── project-to-ci-template/
 │   └── skill-comparison/
 ├── AGENTS.md            # This file
 ├── README.md

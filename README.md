@@ -35,9 +35,6 @@ Skills are installed into `.windsurf/skills/` or `.claude/skills/` (depending on
 ```
 skills/
 ├── git-conditional-identities/
-├── git-workflow-automator/
-├── one-page-visual/
-├── project-to-ci-template/
 └── skill-comparison/
 ```
 

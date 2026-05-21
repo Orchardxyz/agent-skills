@@ -34,9 +34,11 @@ Skills are installed into `.windsurf/skills/` or `.claude/skills/` (depending on
 
 ```
 skills/
-├── .curated/      # Stable, well-tested skills
-├── .experimental/ # Work-in-progress skills
-└── .system/       # Internal/meta skills
+├── git-conditional-identities/
+├── git-workflow-automator/
+├── one-page-visual/
+├── project-to-ci-template/
+└── skill-comparison/
 ```
 
 Each skill is a self-contained directory:

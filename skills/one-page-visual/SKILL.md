@@ -74,7 +74,7 @@ Gather concise answers; propose options if the user is unsure.
   - `style.css`
 - No in-page theme toggles for the one-pagers; each HTML is a fixed-theme snapshot.
 - Do not place theme/style labels or “current version” text inside the visuals.
-- If the user asks for file creation, create the folder `skills/.experimental/one-page-visual/` or a user-specified path and place the files accordingly.
+- If the user asks for file creation, create the folder `skills/one-page-visual/` or a user-specified path and place the files accordingly.
 - Keep copy concise unless the user provides long-form text; avoid lorem ipsum—write context-aware placeholder copy.
 
 ## Reference style & briefing helpers (for faster user alignment)

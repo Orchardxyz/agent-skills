@@ -11,19 +11,18 @@ This repository stores reusable [Agent Skills](https://agentskills.io/) — stru
 ```
 agent-skills/
 ├── skills/
-│   ├── .curated/        # Reviewed, stable skills — high quality bar
-│   ├── .experimental/   # New or community-contributed skills under review
-│   └── .system/         # Internal skills for repo tooling/meta tasks
-├── docs/
-│   ├── CONTRIBUTING.md
-│   └── SKILL_TEMPLATE.md
+│   ├── git-conditional-identities/
+│   ├── git-workflow-automator/
+│   ├── one-page-visual/
+│   ├── project-to-ci-template/
+│   └── skill-comparison/
 ├── AGENTS.md            # This file
 ├── README.md
 ├── LICENSE
 └── .gitignore
 ```
 
-Each individual skill lives in its own subdirectory under one of the `skills/` subdirectories:
+Each individual skill lives in its own subdirectory under `skills/`:
 
 ```
 skills/
@@ -38,7 +37,7 @@ skills/
 
 ### 1. Directory and Naming
 
-- Place new skills in `skills/.experimental/` unless explicitly told otherwise
+- Place new skills in `skills/` unless explicitly told otherwise
 - The skill directory name **must** match the `name` field in `SKILL.md` exactly
 - Use **kebab-case** only: lowercase letters `a-z` and hyphens `-`
 - No uppercase, no underscores, no spaces, no consecutive hyphens (`--`)
@@ -140,7 +139,7 @@ Every skill directory must include a `README.md` that, at minimum, contains an *
 Validate a skill before committing:
 
 ```bash
-npx skills-ref validate ./skills/.experimental/my-skill
+npx skills-ref validate ./skills/my-skill
 ```
 
 This checks that:
@@ -178,11 +177,3 @@ This means:
 - The `description` field is **critical** — it is the primary signal agents use to decide whether to activate a skill
 - Skills with vague descriptions will be overlooked
 - Skills with overly broad descriptions will be activated unnecessarily
-
-## Moving Skills from Experimental to Curated
-
-A skill can be promoted from `.experimental/` to `.curated/` when:
-- It has been tested with at least one real-world use case
-- The `SKILL.md` passes validation
-- It has been reviewed via pull request
-- Documentation is complete and accurate

@@ -1,57 +1,48 @@
 # My Agent Skills
 
-My personal collection of reusable [Agent Skills](https://agentskills.io/) for AI coding assistants (Claude Code, Windsurf, Cursor, etc.). Open source — feel free to use them in your own projects.
+A small public collection of [Agent Skills](https://agentskills.io/) for AI coding assistants.
+
+Most skills in this repo come from my personal workflow, habits, and tooling preferences, so they may feel opinionated. They are still open for reuse, and `skill-comparison` in particular is designed to be broadly useful beyond my own setup.
 
 ## Skills
 
-| Skill | Description | Status |
-|-------|-------------|--------|
-| *(more coming soon)* | | |
+| Skill | Notes |
+|-------|-------|
+| `skill-comparison` | General-purpose skill for comparing similar skills and choosing the best fit. |
+| `git-conventions` | Opinionated git naming and PR-writing helper based on my preferred workflow. |
+| `git-conditional-identities` | Personal productivity helper for per-folder Git identities. |
+| `codex-proxy` | Environment-specific helper for fixing Codex proxy connectivity issues. |
 
-## Usage
+## Install
 
-### Install a specific skill
-
-```bash
-npx skills add https://github.com/Orchardxyz/agent-skills --skill [skill-name]
-```
-
-Example for `skill-comparison`:
+Install one skill:
 
 ```bash
 npx skills add https://github.com/Orchardxyz/agent-skills --skill skill-comparison
 ```
 
-### Install all curated skills
+Install all skills:
 
 ```bash
 npx skills add https://github.com/Orchardxyz/agent-skills --skill '*'
 ```
 
-Skills are installed into `.windsurf/skills/` or `.claude/skills/` (depending on your agent) and are automatically discovered at startup.
+## Format
 
-## Repository Structure
+Each skill lives under `skills/<skill-name>/` and should at least contain:
 
-```
-skills/
-├── git-conditional-identities/
-├── git-conventions/
-└── skill-comparison/
+```text
+SKILL.md
+README.md
 ```
 
-Each skill is a self-contained directory:
+Validate a skill with:
 
-```
-skill-name/
-├── SKILL.md       # Instructions + metadata (required)
-├── scripts/       # Executable code (optional)
-├── references/    # Reference docs (optional)
-└── assets/        # Templates, data files (optional)
+```bash
+npx skills-ref validate ./skills/<skill-name>
 ```
 
-## Contributing
-
-Issues and PRs are welcome. See [AGENTS.md](AGENTS.md) for the conventions used in this repo.
+See [AGENTS.md](AGENTS.md) for the repo conventions.
 
 ## License
 

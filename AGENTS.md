@@ -1,177 +1,79 @@
-# AGENTS.md — Guidance for AI Agents
+# AGENTS.md
 
-This file provides instructions for AI agents (Claude, Windsurf, Cursor, etc.) working inside this repository. Read this file before making any changes.
+本仓库用于存放可复用的 Agent Skills。对这个仓库的修改，默认以“保持 skill 规范正确、结构简单清晰”为优先。
 
-## Repository Purpose
+## 仓库约定
 
-This repository stores reusable [Agent Skills](https://agentskills.io/) — structured instruction sets that extend AI agent capabilities. Skills are consumed by agent products that support the Agent Skills specification.
+- 所有 skill 放在 `skills/` 目录下。
+- 一个目录对应一个 skill。
+- 新增或修改 skill 时，优先保持最小结构，不要引入无关文件。
 
-## Repository Structure
+## 每个 Skill 必须遵循的格式
 
-```
-agent-skills/
-├── skills/
-│   ├── git-conditional-identities/
-│   ├── git-conventions/
-│   └── skill-comparison/
-├── AGENTS.md            # This file
-├── README.md
-├── LICENSE
-└── .gitignore
+目录结构至少应为：
+
+```text
+skills/<skill-name>/
+  SKILL.md
+  README.md
 ```
 
-Each individual skill lives in its own subdirectory under `skills/`:
+可选目录：
 
-```
-skills/
-└── my-skill/
-    ├── SKILL.md          # Required
-    ├── scripts/          # Optional: executable scripts
-    ├── references/       # Optional: reference docs
-    └── assets/           # Optional: templates, data files
-```
+- `scripts/`
+- `references/`
+- `assets/`
 
-## Rules for Creating New Skills
+### 命名规则
 
-### 1. Directory and Naming
+- skill 目录名必须与 `SKILL.md` frontmatter 中的 `name` 完全一致。
+- 目录名只能使用 kebab-case：小写字母、数字、连字符。
+- 不允许空格、下划线、大写、首尾连字符、连续连字符。
 
-- Place new skills in `skills/` unless explicitly told otherwise
-- The skill directory name **must** match the `name` field in `SKILL.md` exactly
-- Use **kebab-case** only: lowercase letters `a-z` and hyphens `-`
-- No uppercase, no underscores, no spaces, no consecutive hyphens (`--`)
-- Must not start or end with a hyphen
-- Length: 1–64 characters
+## SKILL.md 最低要求
 
-Valid examples: `pdf-processing`, `code-review`, `data-analysis`  
-Invalid examples: `PDF-Processing`, `code_review`, `-data-analysis`, `data--analysis`
-
-### 2. Required SKILL.md Frontmatter
-
-Every `SKILL.md` must begin with YAML frontmatter containing at minimum:
+`SKILL.md` 必须以 YAML frontmatter 开头，至少包含：
 
 ```yaml
 ---
 name: skill-name
-description: A clear description of what this skill does and when to use it.
+description: 说明这个 skill 做什么，以及什么情况下应该使用它。
 ---
 ```
 
-**`name` field rules:**
-- Must exactly match the parent directory name
-- 1–64 characters, lowercase alphanumeric and hyphens only
+要求：
 
-**`description` field rules:**
-- 1–1,024 characters
-- Must describe **both** what the skill does **and** when to use it
-- Include specific keywords that help agents identify relevant tasks
-- Avoid vague descriptions like "Helps with PDFs" — be specific
+- `name` 必须等于目录名。
+- `description` 不能含糊，必须同时写清“做什么”和“何时使用”。
+- 正文保持聚焦，一个 skill 只解决一类问题。
+- 说明尽量明确，少写模糊表述，必要时给出步骤或示例。
 
-### 3. Optional Frontmatter Fields
+## README 要求
 
-```yaml
----
-name: skill-name
-description: What this skill does and when to use it.
-license: MIT
-compatibility: Requires Python 3.10+, internet access
-metadata:
-  author: your-github-username
-  version: "1.0"
-allowed-tools: Bash(git:*) Read Write
----
-```
+- 每个 skill 都必须有 `README.md`。
+- `README.md` 至少要包含 `Installation` 部分。
+- 如果 skill 依赖脚本、运行时或外部工具，要在 README 中写清楚。
 
-- **`license`**: Specify the license for this skill (e.g., `MIT`, `Apache-2.0`). Defaults to the repo's MIT license if omitted.
-- **`compatibility`**: Only include if the skill has specific environment requirements (1–500 characters).
-- **`metadata`**: A map of string key-value pairs for additional properties. Use reasonably unique key names.
-- **`allowed-tools`**: Space-delimited list of pre-approved tools. Experimental — support varies by agent.
+## 校验
 
-### 4. SKILL.md Body Content
-
-Keep the body **under 5,000 tokens** (recommended). Structure it clearly:
-
-```markdown
-# Skill Name
-
-## When to use this skill
-Describe the exact scenarios that should trigger this skill.
-
-## How to [main task]
-Step-by-step instructions...
-
-## Examples
-Concrete input/output examples...
-
-## Edge cases
-Known limitations and how to handle them...
-```
-
-Use **progressive disclosure**: put the most important instructions first. Reference external files for details:
-
-```markdown
-See [the reference guide](references/REFERENCE.md) for full API details.
-Run the extraction script: `scripts/extract.py`
-```
-
-### 5. Optional Directories
-
-- **`scripts/`** — Executable code. Scripts must be self-contained or clearly document their dependencies. Include helpful error messages and handle edge cases gracefully.
-- **`references/`** — Detailed documentation (e.g., `REFERENCE.md`, `FORMS.md`, domain-specific files). Loaded only when referenced.
-- **`assets/`** — Templates, images, data files, schemas. Loaded only when referenced.
-
-### 6. Required README
-
-Every skill directory must include a `README.md` that, at minimum, contains an **Installation** section explaining how to set up or install any needed dependencies.
-
-## Code Quality Guidelines
-
-- Write instructions that are **unambiguous** — an agent should be able to follow them without guessing
-- Prefer **numbered steps** over prose for procedural instructions
-- Include **concrete examples** with realistic inputs and outputs
-- Test your skill by mentally simulating an agent following the instructions
-- Keep `SKILL.md` focused — one skill, one responsibility
-- If a skill grows too large, consider splitting it
-
-## Validation
-
-Validate a skill before committing:
+新增或修改 skill 后，提交前运行：
 
 ```bash
-npx skills-ref validate ./skills/my-skill
+npx skills-ref validate ./skills/<skill-name>
 ```
 
-This checks that:
-- `name` matches the directory name
-- `description` is present and within length limits
-- Frontmatter YAML is valid
-- No required fields are missing
+这一步用于确认：
 
-## Git Workflow Best Practices
+- 目录名与 `name` 一致
+- `description` 存在且格式有效
+- frontmatter YAML 合法
+- 必填字段没有缺失
 
-- Create a new branch for each new skill: `git checkout -b add/skill-name`
-- Commit message format: `feat(skills): add skill-name skill`
-- One skill per pull request (keeps reviews focused)
-- Update `README.md` skills table when adding a curated skill
-- Do not commit directly to `main`
+如果你不确定某个 skill 是否符合规范，先修到能通过这条校验命令。
 
-## Safety Considerations
+## 安全与提交
 
-- **Never hardcode secrets**, API keys, tokens, or passwords in any file
-- **Never hardcode personal information** (emails, usernames, account IDs)
-- Scripts in `scripts/` should not make network requests without documenting this in `compatibility`
-- If a skill requires credentials, instruct the agent to read them from environment variables
-- Prefer read-only operations; document any write/delete operations explicitly
-
-## Skill Discovery Mechanism
-
-Agent products that support the Agent Skills spec discover skills by:
-
-1. Scanning configured skill directories for subdirectories containing `SKILL.md`
-2. Parsing the `name` and `description` frontmatter fields (~100 tokens per skill)
-3. Injecting metadata into the agent's context as structured XML
-4. Loading the full `SKILL.md` body only when a task matches the skill's description
-
-This means:
-- The `description` field is **critical** — it is the primary signal agents use to decide whether to activate a skill
-- Skills with vague descriptions will be overlooked
-- Skills with overly broad descriptions will be activated unnecessarily
+- 不要写入任何密钥、token、密码或个人敏感信息。
+- 需要凭据时，改为从环境变量读取。
+- 脚本若会联网或写文件，需在文档中明确说明。
+- 不要直接提交到 `main`。

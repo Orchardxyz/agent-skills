@@ -64,7 +64,12 @@ Subject: ≤50 chars, stands alone in `git log --oneline`. Body: what and why, n
 
 ## PR Description
 
-If the repo has a PR template, fill each section concisely. If not, provide a summary, motivation, and verification steps. For UI-facing changes that affect multiple states, include a test prompt the reviewer can paste and run. Never include `Co-Authored-By: Claude` or similar trailers unless explicitly asked.
+- Keep it short and scannable — reviewers skim, they don't read essays.
+- Bullet points over paragraphs. One sentence per point.
+- If the repo has a PR template, fill each section concisely.
+- If not, provide a summary, motivation, and verification steps.
+- For UI changes that affect multiple states, include a test prompt the reviewer can paste and run.
+- Never include `Co-Authored-By: Claude` or similar trailers unless explicitly asked.
 
 ## Anti-Patterns
 

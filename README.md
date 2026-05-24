@@ -6,14 +6,15 @@ Most skills in this repo come from my personal workflow, habits, and tooling pre
 
 ## Skills
 
-| Skill | Notes |
-|-------|-------|
-| `skill-comparison` | General-purpose skill for comparing similar skills and choosing the best fit. |
-| `git-conventions` | Opinionated git naming and PR-writing helper based on my preferred workflow. |
-| `git-conditional-identities` | Personal productivity helper for per-folder Git identities. |
-| `codex-proxy` | Environment-specific helper for fixing Codex proxy connectivity issues. |
-| `executor-plans` | Write decision-complete implementation plans for handoff to another model or engineer. |
-| `executor-reviews` | Review code written by another model or engineer with evidence-based findings and self-check results. |
+| Skill                            | Notes                                                                                                 |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `skill-comparison`               | General-purpose skill for comparing similar skills and choosing the best fit.                         |
+| `git-conventions`                | Opinionated git naming and PR-writing helper based on my preferred workflow.                          |
+| `git-conditional-identities`     | Personal productivity helper for per-folder Git identities.                                           |
+| `codex-proxy`                    | Environment-specific helper for fixing Codex proxy connectivity issues.                               |
+| `executor-plans`                 | Write decision-complete implementation plans for handoff to another model or engineer.                |
+| `executor-reviews`               | Review code written by another model or engineer with evidence-based findings and self-check results. |
+| `visualizing-leetcode-solutions` | Generates single-file HTML walkthroughs that visualize one LeetCode solution step by step.            |
 
 ## Install
 

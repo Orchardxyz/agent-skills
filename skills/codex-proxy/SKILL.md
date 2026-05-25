@@ -1,20 +1,20 @@
 ---
 name: codex-proxy
-description: Use when Codex CLI shows "Reconnecting" errors, websocket connection failures, or the user says Codex cannot connect. Also use when the user asks to configure a proxy for Codex. Detects Clash/闪狐云 proxy address automatically via system settings, or asks the user when detection fails.
+description: Use when Codex CLI shows "Reconnecting" errors, websocket connection failures, or the user says Codex cannot connect. Also use when the user asks to configure a proxy for Codex. Detects Clash or other proxy addresses automatically via system settings, or asks the user when detection fails.
 ---
 
 # Codex Proxy
 
 ## Overview
 
-Codex CLI needs proxy environment variables to route WebSocket and subprocess traffic. Without them, Codex shows "Reconnecting" and can't establish persistent connections. This skill detects the active proxy (Clash, 闪狐云, or manual) and writes the configuration to `~/.codex/.env`.
+Codex CLI needs proxy environment variables to route WebSocket and subprocess traffic. Without them, Codex shows "Reconnecting" and can't establish persistent connections. This skill detects the active proxy (Clash or other proxy tools, or manual) and writes the configuration to `~/.codex/.env`.
 
 ## When to Use
 
 - Codex shows "Reconnecting" repeatedly
 - Codex WebSocket connections fail
 - User asks to configure proxy for Codex
-- After switching proxy apps (Clash ↔ 闪狐云), Codex stops working
+- After switching proxy apps, Codex stops working
 
 ## Detection & Configuration
 

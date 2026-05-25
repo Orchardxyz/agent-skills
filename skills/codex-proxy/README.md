@@ -1,6 +1,6 @@
 # Codex Proxy
 
-Automatically detect and configure HTTP/HTTPS proxy for Codex CLI by reading system proxy settings (Clash, 闪狐云, etc.) and writing them to `~/.codex/.env`.
+Automatically detect and configure HTTP/HTTPS proxy for Codex CLI by reading system proxy settings (Clash, etc.) and writing them to `~/.codex/.env`.
 
 ## Installation
 

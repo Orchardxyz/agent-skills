@@ -1,4 +1,4 @@
-# My Agent Skills
+﻿# My Agent Skills
 
 A small public collection of [Agent Skills](https://agentskills.io/) for AI coding assistants.
 
@@ -14,6 +14,7 @@ Most skills in this repo come from my personal workflow, habits, and tooling pre
 | `codex-proxy`                    | Environment-specific helper for fixing Codex proxy connectivity issues.                               |
 | `executor-plans`                 | Write decision-complete implementation plans for handoff to another model or engineer.                |
 | `executor-reviews`               | Review code written by another model or engineer with evidence-based findings and self-check results. |
+| `oh-my-posh-setup`              | Sets up and troubleshoots a Windows Terminal + PowerShell 7 + oh-my-posh environment.                 |
 | `visualizing-leetcode-solutions` | Generates single-file HTML walkthroughs that visualize one LeetCode solution step by step.            |
 
 ## Install
@@ -50,3 +51,5 @@ See [AGENTS.md](AGENTS.md) for the repo conventions.
 ## License
 
 [MIT](LICENSE)
+
+
